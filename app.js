@@ -2,6 +2,8 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const _ = require("lodash")
+const CONFIG = require("./config")
+const config = require("./config")
 
 const app = express()
 
@@ -9,7 +11,7 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + "/public"))
 
-mongoose.connect("mongodb+srv://admin-naazleen:Test123@naazleen.0x6kl.mongodb.net/todolistDB", { useNewUrlParser: true})
+mongoose.connect("mongodb+srv://admin-naazleen:" + config.MONGO_PASSWORD + "@naazleen.0x6kl.mongodb.net/todolistDB", { useNewUrlParser: true})
 
 const itemsSchema = {
     name: String
